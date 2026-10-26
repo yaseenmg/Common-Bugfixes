@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="[47,48)"
+license="MIT"
+
+[[mods]]
+modId="common_bugfixes"
+version="1.1.0"
+displayName="Common Bugfixes"
+authors="Yaseen"
+# Works on its own on either side: a client without the mod can join a server that has it, and the reverse.
+displayTest="IGNORE_ALL_VERSION"
+description='''Open-source diagnostics for Minecraft 1.20.1 Forge. After a crash it analyses the crash report and names the most likely mod, and it keeps a detailed plain-text log of lag, freezes, memory problems and entity activity.'''
+
+[[dependencies.common_bugfixes]]
+modId="forge"
+mandatory=true
+versionRange="[47,48)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.common_bugfixes]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.21)"
+ordering="NONE"
+side="BOTH"

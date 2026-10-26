@@ -1,0 +1,53 @@
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+
+group = 'com.yaseen.commonbugfixes'
+version = '1.1.0'
+archivesBaseName = 'Common_Bugfixes'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+    copyIdeResources = true
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.console.level', 'info'
+            mods { common_bugfixes { source sourceSets.main } }
+        }
+        server {
+            workingDirectory project.file('run-server')
+            property 'forge.logging.console.level', 'info'
+            mods { common_bugfixes { source sourceSets.main } }
+        }
+    }
+}
+
+repositories { mavenCentral() }
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.3.0'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+jar {
+    manifest {
+        attributes([
+            'Specification-Title'     : 'common_bugfixes',
+            'Specification-Vendor'    : 'Yaseen',
+            'Specification-Version'   : '1',
+            'Implementation-Title'    : 'common_bugfixes',
+            'Implementation-Version'  : project.version,
+            'Implementation-Vendor'   : 'Yaseen'
+        ])
+    }
+}
